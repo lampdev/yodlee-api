@@ -1,14 +1,18 @@
 {
-    "name": "progknife/yodlee-api",
-    "description": "Yodlee API SDK for PHP",
+    "name": "lampdev/yodlee-api",
+    "description": "Yodlee API SDK for PHP - forked by LAMPDev",
     "license": "MIT",
     "support": {
-        "source": "https://github.com/progknife/yodlee-api"
+        "source": "https://github.com/lampdev/yodlee-api"
     },
     "authors": [
         {
             "name": "Karl Manuzon",
             "email": "karl.manuzon@gmail.com"
+        },
+        {
+            "name": "Alexey Deriyenko",
+            "email": "alexey.deriyenko@gmail.com"
         }
     ],
     "require": {
