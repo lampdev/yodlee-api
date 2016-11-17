@@ -57,6 +57,17 @@ class Client
     }
 
     /**
+     * Get the HTTP client.
+     *
+     * @return \YodleeApi\Api\HttpClient
+     */
+    public function getHttpClient()
+    {
+        return $this->httpClient;
+    }
+
+
+    /**
      * Get the providers API.
      *
      * @return \YodleeApi\Api\Providers

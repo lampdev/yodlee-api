@@ -5,6 +5,18 @@ namespace YodleeApi;
 class HttpClient
 {
     /**
+     * Proxy URL
+     * @var string
+     */
+    protected $proxy = null;
+
+    /**
+     * Proxy type
+     * @var string
+     */
+    protected $proxyType = null;
+
+    /**
      * Send a GET request.
      *
      * @param string
@@ -38,6 +50,19 @@ class HttpClient
     public function post($url, $content = '', $requestHeaders = [])
     {
         return $this->send('POST', $url, $content, $requestHeaders);
+    }
+
+    /**
+     * Set proxy.
+     *
+     * @param string
+     * @param string
+     * @return void
+     */
+    public function setProxy($proxy, $proxyType)
+    {
+        $this->proxy = getenv('HTTP_PROXY') ? getenv('HTTP_PROXY') : $proxy;
+        $this->proxyType = getenv('HTTP_PROXY_TYPE') ? getenv('HTTP_PROXY_TYPE') : $proxyType;
     }
 
     /**
@@ -98,7 +123,9 @@ class HttpClient
             CURLOPT_HEADER         => true,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_SSL_VERIFYPEER => false,
-            CURLOPT_TIMEOUT        => 360
+            CURLOPT_TIMEOUT        => 360,
+            CURLOPT_PROXYTYPE      => $this->proxyType,
+            CURLOPT_PROXY          => $this->proxy,
         ]);
 
         $curlErrorNo = curl_errno($ch);
